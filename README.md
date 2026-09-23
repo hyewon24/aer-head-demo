@@ -4,15 +4,15 @@ Static academic project page for **Acoustic Event Realization (AER) Heads** — 
 
 ## TODO before publishing
 
-- [ ] Replace `[PAPER TITLE — TODO]`, `[YOUR NAME — TODO]`, `[YOUR AFFILIATION — TODO]`, `[VENUE / YEAR — TODO]` in `index.html`.
-- [ ] Replace the `[ABSTRACT — TODO ...]` paragraph in `index.html` with the final abstract.
+- [x] Replace `[PAPER TITLE — TODO]`, `[YOUR NAME — TODO]`, `[YOUR AFFILIATION — TODO]`, `[VENUE / YEAR — TODO]` in `index.html`.
+- [x] Replace the `[ABSTRACT — TODO ...]` paragraph in `index.html` with the final abstract.
 - [ ] Add your own `paper.pdf` to this folder (the previous owner's PDF was removed — do not reuse it).
-- [ ] Update the contact email in the footer if `haewonn29@gmail.com` isn't the right contact.
+- [x] Update the contact email in the footer if `haewonn29@gmail.com` isn't the right contact.
 
 ## Structure
 
 - **Abstract** — paper abstract.
-- **01 / AER Head Masking** (`#aer-head-masking`) — for each of Stable Audio Open / TANGO / AudioLDM2, curated examples comparing Baseline / Top-10% (AER heads masked) / Random-10% masked. Opens with a same-prompt ("A cat meowing repeatedly") three-way comparison across all models.
+- **01 / AER Head Masking** (`#aer-head-masking`) — for each of Stable Audio Open / TANGO / AudioLDM2, curated examples comparing Baseline / Bottom-ranked / Random / Top-ranked (AER heads masked) conditions, at each model's own masking ratio (SAO 10%, TANGO 40%, AudioLDM2 40%). Opens with a same-prompt ("A cat meowing repeatedly") three-way comparison across all models.
 - **02 / Low-Ranked Head Masking** (`#low-ranked-masking`) — control condition: masking the lowest-ranked heads, at percentages well beyond 10% (SAO 60/70/80%, TANGO 10/20/30%, AudioLDM2 30/40/50%), to show the generated audio stays essentially unchanged.
 
 ## Deploy on GitHub Pages
