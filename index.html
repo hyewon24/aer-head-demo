@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description"
+        content="Audio demonstrations of Acoustic Event Realization (AER) heads: causally validated cross-attention heads in text-to-audio diffusion models, across Stable Audio Open, TANGO, and AudioLDM2.">
+    <meta name="theme-color" content="#122b45">
+    <title>Unveiling Acoustic Event Realization Heads | Demo</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body><a class="skip" href="#main">Skip to content</a>
+    <nav aria-label="Main navigation">
+        <div><a href="#abstract">Abstract</a><a href="#aer-head-masking">AER Head Masking</a><a
+                href="#low-ranked-masking">Low-Ranked Head Masking</a></div>
+    </nav>
+    <main id="main">
+        <header class="hero" id="top">
+            <div class="eyebrow">ICASSP 2027</div>
+            <h1>Unveiling Acoustic Event<br class="desktop"> Realization Heads<br class="desktop"> <span>in
+                    Text-to-Audio Generative Models</span></h1>
+            <p class="authors">Hyewon Cho<sup>1</sup> <span>&middot;</span> Sunghyun Ryu<sup>2</sup> <span>&middot;</span>
+                Won-Gook Choi<sup>1</sup> <span>&middot;</span> Joon-Hyuk Chang<sup>1,2,&dagger;</sup></p>
+            <div class="affiliations">
+                <p><sup>1</sup> Department of Electronic Engineering, Hanyang University</p>
+                <p><sup>2</sup> Department of Artificial Intelligence, Hanyang University</p>
+                <p>Seoul, Republic of Korea <span>&middot;</span> &dagger; Corresponding author</p>
+            </div>
+            <div class="actions"><a class="button primary" href="#aer-head-masking">Listen to samples <span
+                        aria-hidden="true">&#8599;</span></a><a class="button" href="paper.pdf">Read the paper <span
+                        class="filetype">PDF</span></a></div>
+        </header>
+        <section id="abstract" class="abstract">
+            <div><span class="eyebrow">THE RESEARCH</span>
+                <h2>Abstract</h2>
+            </div>
+            <div>
+                <p>Recent text-to-audio (TTA) models have advanced rapidly in generating diverse and realistic audio
+                    from text descriptions. Cross-attention plays an important role in incorporating textual
+                    information, yet our understanding of individual cross-attention heads remains limited. In this
+                    work, we define acoustic event realization (AER) as the successful generation of acoustic events
+                    described in the input caption and AER heads as cross-attention heads important for this
+                    process. We propose event attention mass (EAM) to identify AER heads based on their attention to
+                    acoustic-event tokens. Across three TTA models, we identify AER heads using EAM and evaluate
+                    their functional importance through head masking. Masking AER heads led to larger reductions in
+                    target acoustic-event confidence (TAEC) and greater degradation in FAD and CLAP. Moreover, these
+                    masking effects were consistent with the corresponding mean EAM distributions across the head
+                    ranking, suggesting that the EAM distribution is associated with differences in head
+                    contributions to AER. In addition, low-ranked head masking largely preserved acoustic event
+                    realization, suggesting the potential for selective head manipulation. Overall, our findings
+                    provide a deeper understanding of individual cross-attention head contributions to acoustic
+                    event realization in TTA models.</p>
+                <p class="keywords">Index Terms: text-to-audio generation, acoustic event realization head,
+                    cross-attention, event attention mass</p>
+            </div>
+        </section>
+        <section id="aer-head-masking">
+            <div class="section-heading">
+                <div><span class="eyebrow">01 / AUDIO DEMONSTRATIONS</span>
+                    <h2>Impact of AER Head Masking on Acoustic Event Realization</h2>
+                </div>
+            </div>
+            <p class="intro">To demonstrate the functional importance of AER heads, we compare audio generated
+                under the baseline and three head-masking conditions&mdash;random, bottom-ranked, and AER head
+                masking&mdash;using the same masking ratio. The target acoustic event is largely preserved under
+                random or bottom-ranked head masking, but is suppressed or removed when AER heads are masked,
+                supporting their functional importance in acoustic event realization.</p>
+            <div class="listening-note">Masking ratio shown per model: Stable Audio Open 10%, TANGO 40%,
+                AudioLDM2 40%. Open a model group below to compare the four conditions for each prompt. Starting
+                a new sample pauses the previous one.</div>
+            <article class="sample comparison">
+    <header class="sample-head"><span class="eyebrow">REPRESENTATIVE EXAMPLE · STABLE AUDIO OPEN</span>
+        <h3>&ldquo;A cat meowing repeatedly&rdquo;</h3>
+    </header>
+    <div class="comparison-grid cols-1">
+        <div class="model-card"><span class="eyebrow">STABLE AUDIO OPEN</span>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/same_prompt_648/sao_baseline.png" alt="Mel spectrogram: Stable Audio Open — cat meowing — Baseline"><audio controls preload="none" aria-label="Stable Audio Open — cat meowing — Baseline" src="./samples/same_prompt_648/sao_baseline.wav">Your browser does not support audio. <a href="./samples/same_prompt_648/sao_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-10%</span><img class="spec-thumb" src="./img/same_prompt_648/sao_bottom10pct.png" alt="Mel spectrogram: Stable Audio Open — cat meowing — Bottom-10%"><audio controls preload="none" aria-label="Stable Audio Open — cat meowing — Bottom-10%" src="./samples/same_prompt_648/sao_bottom10pct.wav">Your browser does not support audio. <a href="./samples/same_prompt_648/sao_bottom10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-10%</span><img class="spec-thumb" src="./img/same_prompt_648/sao_random10pct.png" alt="Mel spectrogram: Stable Audio Open — cat meowing — Random-10%"><audio controls preload="none" aria-label="Stable Audio Open — cat meowing — Random-10%" src="./samples/same_prompt_648/sao_random10pct.wav">Your browser does not support audio. <a href="./samples/same_prompt_648/sao_random10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-10%</span><img class="spec-thumb" src="./img/same_prompt_648/sao_top10pct.png" alt="Mel spectrogram: Stable Audio Open — cat meowing — Top-10%"><audio controls preload="none" aria-label="Stable Audio Open — cat meowing — Top-10%" src="./samples/same_prompt_648/sao_top10pct.wav">Your browser does not support audio. <a href="./samples/same_prompt_648/sao_top10pct.wav">Download sample</a></audio></div>
+    </div>
+</div>
+    </div>
+    <p class="comparison-caption">Top-10% AER head masking collapses the meow into a flat, degenerate tone, while masking a random 10% or the bottom-ranked 10% leaves it essentially intact &mdash; demonstrating the functional importance of AER heads in acoustic event realization.</p>
+</article>
+            <details class="emotion model-group">
+    <summary><span class="emotion-name">Stable Audio Open</span><span class="muted">3 examples</span></summary>
+    <div class="model-group-body">
+        <article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A person whistling&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/sao/198_baseline.png" alt="Mel spectrogram: A person whistling — Baseline"><audio controls preload="none" aria-label="A person whistling — Baseline" src="./samples/aer_head_masking/sao/198_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/198_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-10%</span><img class="spec-thumb" src="./img/aer_head_masking/sao/198_bottom10pct.png" alt="Mel spectrogram: A person whistling — Bottom-10%"><audio controls preload="none" aria-label="A person whistling — Bottom-10%" src="./samples/aer_head_masking/sao/198_bottom10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/198_bottom10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-10%</span><img class="spec-thumb" src="./img/aer_head_masking/sao/198_random10pct.png" alt="Mel spectrogram: A person whistling — Random-10%"><audio controls preload="none" aria-label="A person whistling — Random-10%" src="./samples/aer_head_masking/sao/198_random10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/198_random10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-10% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/sao/198_top10pct.png" alt="Mel spectrogram: A person whistling — Top-10% (AER heads)"><audio controls preload="none" aria-label="A person whistling — Top-10% (AER heads)" src="./samples/aer_head_masking/sao/198_top10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/198_top10pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A person types on a keyboard&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/sao/890_baseline.png" alt="Mel spectrogram: A person types on a keyboard — Baseline"><audio controls preload="none" aria-label="A person types on a keyboard — Baseline" src="./samples/aer_head_masking/sao/890_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/890_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-10%</span><img class="spec-thumb" src="./img/aer_head_masking/sao/890_bottom10pct.png" alt="Mel spectrogram: A person types on a keyboard — Bottom-10%"><audio controls preload="none" aria-label="A person types on a keyboard — Bottom-10%" src="./samples/aer_head_masking/sao/890_bottom10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/890_bottom10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-10%</span><img class="spec-thumb" src="./img/aer_head_masking/sao/890_random10pct.png" alt="Mel spectrogram: A person types on a keyboard — Random-10%"><audio controls preload="none" aria-label="A person types on a keyboard — Random-10%" src="./samples/aer_head_masking/sao/890_random10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/890_random10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-10% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/sao/890_top10pct.png" alt="Mel spectrogram: A person types on a keyboard — Top-10% (AER heads)"><audio controls preload="none" aria-label="A person types on a keyboard — Top-10% (AER heads)" src="./samples/aer_head_masking/sao/890_top10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/890_top10pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A cat meowing repeatedly&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/sao/648_baseline.png" alt="Mel spectrogram: A cat meowing repeatedly — Baseline"><audio controls preload="none" aria-label="A cat meowing repeatedly — Baseline" src="./samples/aer_head_masking/sao/648_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/648_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-10%</span><img class="spec-thumb" src="./img/aer_head_masking/sao/648_bottom10pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Bottom-10%"><audio controls preload="none" aria-label="A cat meowing repeatedly — Bottom-10%" src="./samples/aer_head_masking/sao/648_bottom10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/648_bottom10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-10%</span><img class="spec-thumb" src="./img/aer_head_masking/sao/648_random10pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Random-10%"><audio controls preload="none" aria-label="A cat meowing repeatedly — Random-10%" src="./samples/aer_head_masking/sao/648_random10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/648_random10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-10% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/sao/648_top10pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Top-10% (AER heads)"><audio controls preload="none" aria-label="A cat meowing repeatedly — Top-10% (AER heads)" src="./samples/aer_head_masking/sao/648_top10pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/sao/648_top10pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+    </div>
+</details>
+<details class="emotion model-group">
+    <summary><span class="emotion-name">TANGO</span><span class="muted">3 examples</span></summary>
+    <div class="model-group-body">
+        <article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A person whistling&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/tango/198_baseline.png" alt="Mel spectrogram: A person whistling — Baseline"><audio controls preload="none" aria-label="A person whistling — Baseline" src="./samples/aer_head_masking/tango/198_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/198_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/aer_head_masking/tango/198_bottom40pct.png" alt="Mel spectrogram: A person whistling — Bottom-40%"><audio controls preload="none" aria-label="A person whistling — Bottom-40%" src="./samples/aer_head_masking/tango/198_bottom40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/198_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-40%</span><img class="spec-thumb" src="./img/aer_head_masking/tango/198_random40pct.png" alt="Mel spectrogram: A person whistling — Random-40%"><audio controls preload="none" aria-label="A person whistling — Random-40%" src="./samples/aer_head_masking/tango/198_random40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/198_random40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-40% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/tango/198_top40pct.png" alt="Mel spectrogram: A person whistling — Top-40% (AER heads)"><audio controls preload="none" aria-label="A person whistling — Top-40% (AER heads)" src="./samples/aer_head_masking/tango/198_top40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/198_top40pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A vehicle moving over pavement with loud horn honking noise&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/tango/834_baseline.png" alt="Mel spectrogram: A vehicle moving over pavement with loud horn honking noise — Baseline"><audio controls preload="none" aria-label="A vehicle moving over pavement with loud horn honking noise — Baseline" src="./samples/aer_head_masking/tango/834_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/834_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/aer_head_masking/tango/834_bottom40pct.png" alt="Mel spectrogram: A vehicle moving over pavement with loud horn honking noise — Bottom-40%"><audio controls preload="none" aria-label="A vehicle moving over pavement with loud horn honking noise — Bottom-40%" src="./samples/aer_head_masking/tango/834_bottom40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/834_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-40%</span><img class="spec-thumb" src="./img/aer_head_masking/tango/834_random40pct.png" alt="Mel spectrogram: A vehicle moving over pavement with loud horn honking noise — Random-40%"><audio controls preload="none" aria-label="A vehicle moving over pavement with loud horn honking noise — Random-40%" src="./samples/aer_head_masking/tango/834_random40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/834_random40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-40% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/tango/834_top40pct.png" alt="Mel spectrogram: A vehicle moving over pavement with loud horn honking noise — Top-40% (AER heads)"><audio controls preload="none" aria-label="A vehicle moving over pavement with loud horn honking noise — Top-40% (AER heads)" src="./samples/aer_head_masking/tango/834_top40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/834_top40pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Birds chirping repeatedly&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/tango/809_baseline.png" alt="Mel spectrogram: Birds chirping repeatedly — Baseline"><audio controls preload="none" aria-label="Birds chirping repeatedly — Baseline" src="./samples/aer_head_masking/tango/809_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/809_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/aer_head_masking/tango/809_bottom40pct.png" alt="Mel spectrogram: Birds chirping repeatedly — Bottom-40%"><audio controls preload="none" aria-label="Birds chirping repeatedly — Bottom-40%" src="./samples/aer_head_masking/tango/809_bottom40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/809_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-40%</span><img class="spec-thumb" src="./img/aer_head_masking/tango/809_random40pct.png" alt="Mel spectrogram: Birds chirping repeatedly — Random-40%"><audio controls preload="none" aria-label="Birds chirping repeatedly — Random-40%" src="./samples/aer_head_masking/tango/809_random40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/809_random40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-40% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/tango/809_top40pct.png" alt="Mel spectrogram: Birds chirping repeatedly — Top-40% (AER heads)"><audio controls preload="none" aria-label="Birds chirping repeatedly — Top-40% (AER heads)" src="./samples/aer_head_masking/tango/809_top40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/tango/809_top40pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+    </div>
+</details>
+<details class="emotion model-group">
+    <summary><span class="emotion-name">AudioLDM2</span><span class="muted">3 examples</span></summary>
+    <div class="model-group-body">
+        <article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Bird cooing then the sounds of wings flapping&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/424_baseline.png" alt="Mel spectrogram: Bird cooing then the sounds of wings flapping — Baseline"><audio controls preload="none" aria-label="Bird cooing then the sounds of wings flapping — Baseline" src="./samples/aer_head_masking/audioldm2/424_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/424_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/424_bottom40pct.png" alt="Mel spectrogram: Bird cooing then the sounds of wings flapping — Bottom-40%"><audio controls preload="none" aria-label="Bird cooing then the sounds of wings flapping — Bottom-40%" src="./samples/aer_head_masking/audioldm2/424_bottom40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/424_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-40%</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/424_random40pct.png" alt="Mel spectrogram: Bird cooing then the sounds of wings flapping — Random-40%"><audio controls preload="none" aria-label="Bird cooing then the sounds of wings flapping — Random-40%" src="./samples/aer_head_masking/audioldm2/424_random40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/424_random40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-40% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/424_top40pct.png" alt="Mel spectrogram: Bird cooing then the sounds of wings flapping — Top-40% (AER heads)"><audio controls preload="none" aria-label="Bird cooing then the sounds of wings flapping — Top-40% (AER heads)" src="./samples/aer_head_masking/audioldm2/424_top40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/424_top40pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Dogs bark and whine and growl&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/871_baseline.png" alt="Mel spectrogram: Dogs bark and whine and growl — Baseline"><audio controls preload="none" aria-label="Dogs bark and whine and growl — Baseline" src="./samples/aer_head_masking/audioldm2/871_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/871_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/871_bottom40pct.png" alt="Mel spectrogram: Dogs bark and whine and growl — Bottom-40%"><audio controls preload="none" aria-label="Dogs bark and whine and growl — Bottom-40%" src="./samples/aer_head_masking/audioldm2/871_bottom40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/871_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-40%</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/871_random40pct.png" alt="Mel spectrogram: Dogs bark and whine and growl — Random-40%"><audio controls preload="none" aria-label="Dogs bark and whine and growl — Random-40%" src="./samples/aer_head_masking/audioldm2/871_random40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/871_random40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-40% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/871_top40pct.png" alt="Mel spectrogram: Dogs bark and whine and growl — Top-40% (AER heads)"><audio controls preload="none" aria-label="Dogs bark and whine and growl — Top-40% (AER heads)" src="./samples/aer_head_masking/audioldm2/871_top40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/871_top40pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Train blowing horn then approaching track sounds&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/239_baseline.png" alt="Mel spectrogram: Train blowing horn then approaching track sounds — Baseline"><audio controls preload="none" aria-label="Train blowing horn then approaching track sounds — Baseline" src="./samples/aer_head_masking/audioldm2/239_baseline.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/239_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/239_bottom40pct.png" alt="Mel spectrogram: Train blowing horn then approaching track sounds — Bottom-40%"><audio controls preload="none" aria-label="Train blowing horn then approaching track sounds — Bottom-40%" src="./samples/aer_head_masking/audioldm2/239_bottom40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/239_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Random-40%</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/239_random40pct.png" alt="Mel spectrogram: Train blowing horn then approaching track sounds — Random-40%"><audio controls preload="none" aria-label="Train blowing horn then approaching track sounds — Random-40%" src="./samples/aer_head_masking/audioldm2/239_random40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/239_random40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Top-40% (AER heads)</span><img class="spec-thumb" src="./img/aer_head_masking/audioldm2/239_top40pct.png" alt="Mel spectrogram: Train blowing horn then approaching track sounds — Top-40% (AER heads)"><audio controls preload="none" aria-label="Train blowing horn then approaching track sounds — Top-40% (AER heads)" src="./samples/aer_head_masking/audioldm2/239_top40pct.wav">Your browser does not support audio. <a href="./samples/aer_head_masking/audioldm2/239_top40pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+    </div>
+</details>
+        </section>
+        <section id="low-ranked-masking">
+            <div class="section-heading">
+                <div><span class="eyebrow">02 / AUDIO DEMONSTRATIONS</span>
+                    <h2>Impact of Low-Ranked Head Masking</h2>
+                </div>
+            </div>
+            <p class="intro">We progressively mask low-ranked heads based on the EAM ranking and compare the
+                generated audio with the baseline. Audio quality and acoustic event realization are largely
+                preserved over a substantial masking range, suggesting that low-ranked heads can be selectively
+                masked with limited impact on generation.</p>
+            <div class="listening-note">Masking ratio shown per model: Stable Audio Open 60/70/80%, TANGO 10/20/30%,
+                AudioLDM2 30/40/50%. Open a model group below to compare the four conditions for each prompt.
+                Starting a new sample pauses the previous one.</div>
+            <article class="sample comparison">
+    <header class="sample-head"><span class="eyebrow">REPRESENTATIVE EXAMPLE · STABLE AUDIO OPEN</span>
+        <h3>&ldquo;A cat meowing repeatedly&rdquo;</h3>
+    </header>
+    <div class="comparison-grid cols-1">
+        <div class="model-card"><span class="eyebrow">STABLE AUDIO OPEN</span>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_baseline.png" alt="Mel spectrogram: A cat meowing repeatedly — Baseline"><audio controls preload="none" aria-label="A cat meowing repeatedly — Baseline" src="./samples/low_ranked_masking/sao/648_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-60%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_bottom60pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Bottom-60% masking"><audio controls preload="none" aria-label="A cat meowing repeatedly — Bottom-60% masking" src="./samples/low_ranked_masking/sao/648_bottom60pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_bottom60pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-70%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_bottom70pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Bottom-70% masking"><audio controls preload="none" aria-label="A cat meowing repeatedly — Bottom-70% masking" src="./samples/low_ranked_masking/sao/648_bottom70pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_bottom70pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-80%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_bottom80pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Bottom-80% masking"><audio controls preload="none" aria-label="A cat meowing repeatedly — Bottom-80% masking" src="./samples/low_ranked_masking/sao/648_bottom80pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_bottom80pct.wav">Download sample</a></audio></div>
+    </div>
+</div>
+    </div>
+    <p class="comparison-caption">Even masking 80% of the lowest-ranked heads &mdash; eight times the percentage used
+        for the AER-head masking above &mdash; leaves the meow essentially intact, confirming that the top-10% effect
+        in Section 01 is specific to the high-ranked heads and not a generic consequence of masking heads at all.
+        Model-specific curated examples for TANGO and AudioLDM2 are grouped below.</p>
+</article>
+            <details class="emotion model-group">
+    <summary><span class="emotion-name">Stable Audio Open</span><span class="muted">3 examples</span></summary>
+    <div class="model-group-body">
+        <article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Church bells ringing&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/183_baseline.png" alt="Mel spectrogram: Church bells ringing — Baseline"><audio controls preload="none" aria-label="Church bells ringing — Baseline" src="./samples/low_ranked_masking/sao/183_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/183_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-60%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/183_bottom60pct.png" alt="Mel spectrogram: Church bells ringing — Bottom-60%"><audio controls preload="none" aria-label="Church bells ringing — Bottom-60%" src="./samples/low_ranked_masking/sao/183_bottom60pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/183_bottom60pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-70%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/183_bottom70pct.png" alt="Mel spectrogram: Church bells ringing — Bottom-70%"><audio controls preload="none" aria-label="Church bells ringing — Bottom-70%" src="./samples/low_ranked_masking/sao/183_bottom70pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/183_bottom70pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-80%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/183_bottom80pct.png" alt="Mel spectrogram: Church bells ringing — Bottom-80% masking"><audio controls preload="none" aria-label="Church bells ringing — Bottom-80% masking" src="./samples/low_ranked_masking/sao/183_bottom80pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/183_bottom80pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A person whistling&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/198_baseline.png" alt="Mel spectrogram: A person whistling — Baseline"><audio controls preload="none" aria-label="A person whistling — Baseline" src="./samples/low_ranked_masking/sao/198_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/198_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-60%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/198_bottom60pct.png" alt="Mel spectrogram: A person whistling — Bottom-60%"><audio controls preload="none" aria-label="A person whistling — Bottom-60%" src="./samples/low_ranked_masking/sao/198_bottom60pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/198_bottom60pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-70%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/198_bottom70pct.png" alt="Mel spectrogram: A person whistling — Bottom-70%"><audio controls preload="none" aria-label="A person whistling — Bottom-70%" src="./samples/low_ranked_masking/sao/198_bottom70pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/198_bottom70pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-80%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/198_bottom80pct.png" alt="Mel spectrogram: A person whistling — Bottom-80% masking"><audio controls preload="none" aria-label="A person whistling — Bottom-80% masking" src="./samples/low_ranked_masking/sao/198_bottom80pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/198_bottom80pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A cat meowing repeatedly&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_baseline.png" alt="Mel spectrogram: A cat meowing repeatedly — Baseline"><audio controls preload="none" aria-label="A cat meowing repeatedly — Baseline" src="./samples/low_ranked_masking/sao/648_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-60%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_bottom60pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Bottom-60%"><audio controls preload="none" aria-label="A cat meowing repeatedly — Bottom-60%" src="./samples/low_ranked_masking/sao/648_bottom60pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_bottom60pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-70%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_bottom70pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Bottom-70%"><audio controls preload="none" aria-label="A cat meowing repeatedly — Bottom-70%" src="./samples/low_ranked_masking/sao/648_bottom70pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_bottom70pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-80%</span><img class="spec-thumb" src="./img/low_ranked_masking/sao/648_bottom80pct.png" alt="Mel spectrogram: A cat meowing repeatedly — Bottom-80% masking"><audio controls preload="none" aria-label="A cat meowing repeatedly — Bottom-80% masking" src="./samples/low_ranked_masking/sao/648_bottom80pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/sao/648_bottom80pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+    </div>
+</details>
+<details class="emotion model-group">
+    <summary><span class="emotion-name">TANGO</span><span class="muted">3 examples</span></summary>
+    <div class="model-group-body">
+        <article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Brief speech followed by loud applause and cheering&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/258_baseline.png" alt="Mel spectrogram: Brief speech followed by loud applause and cheering — Baseline"><audio controls preload="none" aria-label="Brief speech followed by loud applause and cheering — Baseline" src="./samples/low_ranked_masking/tango/258_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/258_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-10%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/258_bottom10pct.png" alt="Mel spectrogram: Brief speech followed by loud applause and cheering — Bottom-10%"><audio controls preload="none" aria-label="Brief speech followed by loud applause and cheering — Bottom-10%" src="./samples/low_ranked_masking/tango/258_bottom10pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/258_bottom10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-20%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/258_bottom20pct.png" alt="Mel spectrogram: Brief speech followed by loud applause and cheering — Bottom-20%"><audio controls preload="none" aria-label="Brief speech followed by loud applause and cheering — Bottom-20%" src="./samples/low_ranked_masking/tango/258_bottom20pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/258_bottom20pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-30%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/258_bottom30pct.png" alt="Mel spectrogram: Brief speech followed by loud applause and cheering — Bottom-30% masking"><audio controls preload="none" aria-label="Brief speech followed by loud applause and cheering — Bottom-30% masking" src="./samples/low_ranked_masking/tango/258_bottom30pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/258_bottom30pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A woman speaks followed by a sewing machine slow stitching&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/379_baseline.png" alt="Mel spectrogram: A woman speaks followed by a sewing machine slow stitching — Baseline"><audio controls preload="none" aria-label="A woman speaks followed by a sewing machine slow stitching — Baseline" src="./samples/low_ranked_masking/tango/379_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/379_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-10%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/379_bottom10pct.png" alt="Mel spectrogram: A woman speaks followed by a sewing machine slow stitching — Bottom-10%"><audio controls preload="none" aria-label="A woman speaks followed by a sewing machine slow stitching — Bottom-10%" src="./samples/low_ranked_masking/tango/379_bottom10pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/379_bottom10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-20%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/379_bottom20pct.png" alt="Mel spectrogram: A woman speaks followed by a sewing machine slow stitching — Bottom-20%"><audio controls preload="none" aria-label="A woman speaks followed by a sewing machine slow stitching — Bottom-20%" src="./samples/low_ranked_masking/tango/379_bottom20pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/379_bottom20pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-30%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/379_bottom30pct.png" alt="Mel spectrogram: A woman speaks followed by a sewing machine slow stitching — Bottom-30% masking"><audio controls preload="none" aria-label="A woman speaks followed by a sewing machine slow stitching — Bottom-30% masking" src="./samples/low_ranked_masking/tango/379_bottom30pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/379_bottom30pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Several church bells ringing&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/801_baseline.png" alt="Mel spectrogram: Several church bells ringing — Baseline"><audio controls preload="none" aria-label="Several church bells ringing — Baseline" src="./samples/low_ranked_masking/tango/801_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/801_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-10%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/801_bottom10pct.png" alt="Mel spectrogram: Several church bells ringing — Bottom-10%"><audio controls preload="none" aria-label="Several church bells ringing — Bottom-10%" src="./samples/low_ranked_masking/tango/801_bottom10pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/801_bottom10pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-20%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/801_bottom20pct.png" alt="Mel spectrogram: Several church bells ringing — Bottom-20%"><audio controls preload="none" aria-label="Several church bells ringing — Bottom-20%" src="./samples/low_ranked_masking/tango/801_bottom20pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/801_bottom20pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-30%</span><img class="spec-thumb" src="./img/low_ranked_masking/tango/801_bottom30pct.png" alt="Mel spectrogram: Several church bells ringing — Bottom-30% masking"><audio controls preload="none" aria-label="Several church bells ringing — Bottom-30% masking" src="./samples/low_ranked_masking/tango/801_bottom30pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/tango/801_bottom30pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+    </div>
+</details>
+<details class="emotion model-group">
+    <summary><span class="emotion-name">AudioLDM2</span><span class="muted">3 examples</span></summary>
+    <div class="model-group-body">
+        <article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;A person types on a keyboard&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/890_baseline.png" alt="Mel spectrogram: A person types on a keyboard — Baseline"><audio controls preload="none" aria-label="A person types on a keyboard — Baseline" src="./samples/low_ranked_masking/audioldm2/890_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/890_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-30%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/890_bottom30pct.png" alt="Mel spectrogram: A person types on a keyboard — Bottom-30%"><audio controls preload="none" aria-label="A person types on a keyboard — Bottom-30%" src="./samples/low_ranked_masking/audioldm2/890_bottom30pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/890_bottom30pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/890_bottom40pct.png" alt="Mel spectrogram: A person types on a keyboard — Bottom-40%"><audio controls preload="none" aria-label="A person types on a keyboard — Bottom-40%" src="./samples/low_ranked_masking/audioldm2/890_bottom40pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/890_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-50%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/890_bottom50pct.png" alt="Mel spectrogram: A person types on a keyboard — Bottom-50% masking"><audio controls preload="none" aria-label="A person types on a keyboard — Bottom-50% masking" src="./samples/low_ranked_masking/audioldm2/890_bottom50pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/890_bottom50pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Several church bells ringing&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/801_baseline.png" alt="Mel spectrogram: Several church bells ringing — Baseline"><audio controls preload="none" aria-label="Several church bells ringing — Baseline" src="./samples/low_ranked_masking/audioldm2/801_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/801_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-30%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/801_bottom30pct.png" alt="Mel spectrogram: Several church bells ringing — Bottom-30%"><audio controls preload="none" aria-label="Several church bells ringing — Bottom-30%" src="./samples/low_ranked_masking/audioldm2/801_bottom30pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/801_bottom30pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/801_bottom40pct.png" alt="Mel spectrogram: Several church bells ringing — Bottom-40%"><audio controls preload="none" aria-label="Several church bells ringing — Bottom-40%" src="./samples/low_ranked_masking/audioldm2/801_bottom40pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/801_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-50%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/801_bottom50pct.png" alt="Mel spectrogram: Several church bells ringing — Bottom-50% masking"><audio controls preload="none" aria-label="Several church bells ringing — Bottom-50% masking" src="./samples/low_ranked_masking/audioldm2/801_bottom50pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/801_bottom50pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+<article class="sample">
+    <header class="sample-head"><span class="eyebrow">PROMPT</span>
+        <h3>&ldquo;Humming of an engine with people speaking&rdquo;</h3>
+    </header>
+    <div class="audio-grid cols-4">
+        <div class="audio-card"><span class="control-label">Baseline</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/821_baseline.png" alt="Mel spectrogram: Humming of an engine with people speaking — Baseline"><audio controls preload="none" aria-label="Humming of an engine with people speaking — Baseline" src="./samples/low_ranked_masking/audioldm2/821_baseline.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/821_baseline.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-30%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/821_bottom30pct.png" alt="Mel spectrogram: Humming of an engine with people speaking — Bottom-30%"><audio controls preload="none" aria-label="Humming of an engine with people speaking — Bottom-30%" src="./samples/low_ranked_masking/audioldm2/821_bottom30pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/821_bottom30pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-40%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/821_bottom40pct.png" alt="Mel spectrogram: Humming of an engine with people speaking — Bottom-40%"><audio controls preload="none" aria-label="Humming of an engine with people speaking — Bottom-40%" src="./samples/low_ranked_masking/audioldm2/821_bottom40pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/821_bottom40pct.wav">Download sample</a></audio></div><div class="audio-card"><span class="control-label">Bottom-50%</span><img class="spec-thumb" src="./img/low_ranked_masking/audioldm2/821_bottom50pct.png" alt="Mel spectrogram: Humming of an engine with people speaking — Bottom-50% masking"><audio controls preload="none" aria-label="Humming of an engine with people speaking — Bottom-50% masking" src="./samples/low_ranked_masking/audioldm2/821_bottom50pct.wav">Your browser does not support audio. <a href="./samples/low_ranked_masking/audioldm2/821_bottom50pct.wav">Download sample</a></audio></div>
+    </div>
+</article>
+    </div>
+</details>
+        </section>
+    </main>
+    <footer><a class="brand" href="#top">AER Heads<span> / TTA</span></a>
+        <p>Acoustic Event Realization Heads</p><a href="mailto:haewonn0204@hanyang.ac.kr">Contact</a>
+    </footer>
+    <p id="audio-status" class="sr-only" role="status"></p>
+</body>
+
+</html>
