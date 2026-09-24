@@ -1,19 +1,16 @@
 # AER Heads — demo page
 
-Static academic project page for **Acoustic Event Realization (AER) Heads** — causally validated cross-attention heads in text-to-audio diffusion models (Stable Audio Open, TANGO, AudioLDM2). Adapted from the EmoRes (Interspeech 2026) demo template's layout and CSS.
+Static academic project page for **Acoustic Event Realization (AER) Heads** — causally validated cross-attention heads in text-to-audio diffusion models (Stable Audio Open, TANGO, AudioLDM2).
 
 ## TODO before publishing
 
-- [ ] Replace `[PAPER TITLE — TODO]`, `[YOUR NAME — TODO]`, `[YOUR AFFILIATION — TODO]`, `[VENUE / YEAR — TODO]` in `index.html`.
-- [ ] Replace the `[ABSTRACT — TODO ...]` paragraph in `index.html` with the final abstract.
-- [ ] Add your own `paper.pdf` to this folder (the previous owner's PDF was removed — do not reuse it).
-- [ ] Update the contact email in the footer if `haewonn29@gmail.com` isn't the right contact.
+- [ ] Add `paper.pdf` to this folder (the previous owner's PDF was removed — do not reuse it).
 
 ## Structure
 
 - **Abstract** — paper abstract.
-- **01 / AER Head Masking** (`#aer-head-masking`) — for each of Stable Audio Open / TANGO / AudioLDM2, curated examples comparing Baseline / Top-10% (AER heads masked) / Random-10% masked. Opens with a same-prompt ("A cat meowing repeatedly") three-way comparison across all models.
-- **02 / Low-Ranked Head Masking** (`#low-ranked-masking`) — control condition: masking the lowest-ranked heads, at percentages well beyond 10% (SAO 60/70/80%, TANGO 10/20/30%, AudioLDM2 30/40/50%), to show the generated audio stays essentially unchanged.
+- **01 / AER Head Masking** (`#aer-head-masking`) — for each of Stable Audio Open / TANGO / AudioLDM2, curated examples comparing Baseline / Bottom-ranked / Random / Top-ranked (AER heads) masking, each at that model's own masking ratio (SAO 10%, TANGO 40%, AudioLDM2 20%). Opens with a same-prompt ("A cat meowing repeatedly") comparison across all four conditions.
+- **02 / Low-Ranked Head Masking** (`#low-ranked-masking`) — control condition: masking the lowest-ranked heads, at percentages well beyond the AER range above (SAO 60/70/80%, TANGO 10/20/30%, AudioLDM2 30/40/50%). Generation performance stays close to baseline up to SAO 70% / TANGO 20% / AudioLDM2 40%; the next step up per model (labeled "beyond range" on the card) is where quantitative degradation begins.
 
 ## Deploy on GitHub Pages
 
