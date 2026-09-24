@@ -39,20 +39,20 @@
                 <h2>Abstract</h2>
             </div>
             <div>
-                <p>Recent text-to-audio (TTA) models have advanced rapidly in generating diverse and realistic audio
-                    from text descriptions. Cross-attention plays an important role in incorporating textual
-                    information, yet our understanding of individual cross-attention heads remains limited. In this
-                    work, we define acoustic event realization (AER) as the generation of acoustic events described
-                    in the input caption and AER heads as cross-attention heads important for this process. We
-                    introduce event attention mass (EAM), a measure of the attention each head allocates to
-                    acoustic-event tokens. Across three TTA models, we rank cross-attention heads using EAM,
-                    identify the top-ranked heads as AER heads, and evaluate their influence through head masking.
-                    AER heads showed a stronger influence on acoustic event generation than random or bottom-ranked
-                    heads. Furthermore, AER heads had a stronger influence on text-to-audio generation performance,
-                    while low-ranked head masking largely preserved generation performance. These findings
-                    provide insight into the functional roles of individual cross-attention heads in TTA models and
-                    may support future research on acoustic-event control and the identification of other
-                    functional heads.</p>
+                <p>Recent text-to-audio (TTA) models have advanced toward generating diverse and realistic audio
+                    from text descriptions. In these models, cross-attention is commonly used to incorporate
+                    textual information during audio generation, yet our understanding of individual
+                    cross-attention heads remains limited. We therefore refer to the generation of acoustic events
+                    described in the input caption as acoustic event realization (AER) and term cross-attention
+                    heads important for this process AER heads. To identify these heads, we introduce event
+                    attention mass (EAM), which measures the attention each head allocates to acoustic-event
+                    tokens. Across three TTA models, we rank cross-attention heads using EAM, identify the
+                    top-ranked heads as AER heads, and evaluate their influence through head masking. AER heads
+                    showed a stronger influence than random or bottom-ranked heads on both acoustic event
+                    generation and text-to-audio generation performance, while low-ranked head masking largely
+                    preserved generation performance. These findings provide insight into the functional roles of
+                    individual cross-attention heads in TTA models and may support future research on
+                    acoustic-event control and the identification of other functional heads.</p>
                 <p class="keywords">Index Terms: text-to-audio generation, acoustic event realization head,
                     cross-attention, event attention mass</p>
             </div>
